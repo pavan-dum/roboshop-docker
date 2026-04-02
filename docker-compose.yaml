@@ -1,0 +1,19 @@
+services:
+  catalogue:
+    build:
+      dockerfile: catalogue.Dockerfile
+    image: dpavan/catalogue:1.0.0
+    container_name: catalogue
+    depends_on:
+    - mongodb
+  mongodb:
+    build:
+      dockerfile: mongodb.Dockerfile  # it moves to mongodb dir
+    image: dpavan/mongodb:1.0.0  # it is equal to docker build -t dpavan/mongodb:1.0.0
+    container_name: mongodb
+
+networks:
+  default:
+    driver: bridge
+    name: roboshop
+    external: true #it will create network manually
