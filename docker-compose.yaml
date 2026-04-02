@@ -27,7 +27,7 @@ services:
     - catalogue
     - redis
 
-    shipping:
+  shipping:
     build:
       context: ./shipping
       dockerfile: Dockerfile
