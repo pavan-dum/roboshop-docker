@@ -49,6 +49,7 @@ services:
     - catalogue
     - user
     - cart
+    - shipping
 
   mongodb:
     build:
