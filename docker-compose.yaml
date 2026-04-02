@@ -7,6 +7,37 @@ services:
     container_name: catalogue
     depends_on:
     - mongodb
+  
+  user:
+    build:
+      context: ./user
+      dockerfile: Dockerfile
+    image: dpavan/user:1.0.0
+    container_name: user
+    depends_on:
+    - redis
+
+  cart:
+    build:
+      context: ./cart
+      dockerfile: Dockerfile
+    image: dpavan/cart:1.0.0
+    container_name: cart
+    depends_on:
+    - catalogue
+    - redis
+  
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: dpavan/frontend:1.0.0
+    container_name: frontend
+    depends_on:
+    - catalogue
+    - user
+    - cart
+
   mongodb:
     build:
       context: ./mongodb
@@ -14,8 +45,12 @@ services:
     image: dpavan/mongodb:1.0.0  # it is equal to docker build -t dpavan/mongodb:1.0.0
     container_name: mongodb
 
+  redis:
+    image: redis:7.0
+    container_name: redis
+
 networks:
   default:
     driver: bridge
     name: roboshop
-    #external: true #it will create network manually
+    external: false #it will create network manually
