@@ -34,7 +34,6 @@ services:
     image: dpavan/shipping:1.0.0
     container_name: shipping
     depends_on:
-    - cart
     - mysql
   
   frontend:
