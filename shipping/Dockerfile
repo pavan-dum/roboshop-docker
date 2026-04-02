@@ -8,7 +8,7 @@ COPY pom.xml .
 
 COPY src .
 
-RUN muv clean package
+RUN mvn clean package
 
 ENV CART_ENDPOINT="cart:8080" \
     DB_HOST="mysql" \
