@@ -60,6 +60,13 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: RoboShop@1
 
+  rabbitmq:
+    image: rabbitmq:3
+    environment:
+      RABBITMQ_DEFAULT_PASS: roboshop123
+      RABBITMQ_DEFAULT_USER: roboshop
+    container_name: rabbitmq
+
 networks:
   default:
     driver: bridge
