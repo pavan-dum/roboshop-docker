@@ -20,4 +20,5 @@ RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
 RUN chown -R roboshop:roboshop /app
 USER roboshop
 
-CMD ["node", "server.js"]
+CMD ["server.js"] # server.js is a argument
+ENTRYPOINT ["node"]  # node is a command
