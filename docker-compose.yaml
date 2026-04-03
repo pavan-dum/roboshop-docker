@@ -41,7 +41,7 @@ services:
     - catalogue
     - user
     - cart
-    - shipping
+    #- shipping
 
   mongodb:
     build:
