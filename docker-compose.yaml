@@ -64,10 +64,14 @@ services:
      # it moves to mongodb dir
     image: pavankumar41/mongodb:2.0.0  # it is equal to docker build -t dpavan/mongodb:2.0.0
     container_name: mongodb
+    volumes:
+    - mongodb:/data/db
 
   redis:
     image: redis:7.0
     container_name: redis
+    volumes:
+    - redis:/data
   
   mysql:
     build: ./mysql
@@ -75,6 +79,8 @@ services:
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: RoboShop@1
+    volumes:
+    - mysql:/var/lib/mysql
 
   rabbitmq:
     image: rabbitmq:3
@@ -82,9 +88,18 @@ services:
       RABBITMQ_DEFAULT_PASS: roboshop123
       RABBITMQ_DEFAULT_USER: roboshop
     container_name: rabbitmq
+    volumes:
+    - rabbitmq:/var/lib/mysql
+
 
 networks:
   default:
     driver: bridge
     name: roboshop
     external: false #it will create network manually
+  
+volumes:
+ mongodb:  # this is equivalento docker volume create mongodb
+ redis:
+ rabbitmq:
+ mysql:
