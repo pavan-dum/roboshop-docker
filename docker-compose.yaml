@@ -35,7 +35,7 @@ services:
     container_name: shipping
     depends_on:
     - mysql
-    - redis
+  
 
   
   frontend:
