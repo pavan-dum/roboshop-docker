@@ -27,6 +27,15 @@ services:
     - catalogue
     - redis
 
+  shipping:
+    build:
+      context: ./shipping
+      dockerfile: Dockerfile
+    image: dpavan/shipping:2.0.0
+    container_name: shipping
+    depends_on:
+    - mysql
+    - redis
 
   
   frontend:
@@ -41,7 +50,7 @@ services:
     - catalogue
     - user
     - cart
-    #- shipping
+    - shipping
 
   mongodb:
     build:
