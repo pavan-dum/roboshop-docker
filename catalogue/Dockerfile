@@ -1,3 +1,4 @@
+#stage 1: Build
 FROM node:20-alpine As builder
 WORKDIR /app
 COPY package.json .
@@ -5,10 +6,14 @@ COPY *.js .
 RUN npm install
 
 
+#stage 2: Runtime
 FROM node:20-alpine
 WORKDIR /app
 EXPOSE 8080
+
 COPY --from=builder /app /app
+
 ENV MONGO="true" \
     MONGO_URL="mongodb://mongodb:27017/catalogue"
+    
 CMD ["node", "server.js"]
