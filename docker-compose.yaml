@@ -17,7 +17,15 @@ services:
     depends_on:
     - redis
 
-
+  cart:
+    build:
+      context: ./cart
+      dockerfile: Dockerfile
+    image: dpavan/cart:2.0.0
+    container_name: cart
+    depends_on:
+    - catalogue
+    - redis
 
   shipping:
     build:
@@ -27,6 +35,7 @@ services:
     container_name: shipping
     depends_on:
     - mysql
+    - cart
   
 
   
@@ -41,7 +50,7 @@ services:
     depends_on:
     - catalogue
     - user
-    #- cart
+    - cart
     - shipping
 
   mongodb:
