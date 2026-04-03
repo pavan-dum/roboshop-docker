@@ -1,21 +1,21 @@
 services:
   catalogue:
     build: ./catalogue
-    image: dpavan/catalogue:2.0.0
+    image: pavankumar41/catalogue:2.0.0
     container_name: catalogue
     depends_on:
     - mongodb
   
   user:
     build: ./user
-    image: dpavan/user:2.0.0
+    image: pavankumar41/user:2.0.0
     container_name: user
     depends_on:
     - redis
 
   cart:
     build: ./cart
-    image: dpavan/cart:2.0.0
+    image: pavankumar41/cart:2.0.0
     container_name: cart
     depends_on:
     - catalogue
@@ -23,7 +23,7 @@ services:
 
   shipping:
     build: ./shipping
-    image: dpavan/shipping:2.0.0
+    image: pavankumar41/shipping:2.0.0
     container_name: shipping
     depends_on:
     - mysql
@@ -31,7 +31,7 @@ services:
   
   payment:
     build: ./payment
-    image: joindevops/payment:1.0.0
+    image: pavankumar41/payment:1.0.0
     container_name: payment
     environment:
       CART_HOST: "cart"
@@ -48,7 +48,7 @@ services:
   
   frontend:
     build: ./frontend
-    image: dpavan/frontend:2.0.0
+    image: pavankumar41/frontend:2.0.0
     container_name: frontend
     ports:
     - "80:80"
@@ -62,7 +62,7 @@ services:
   mongodb:
     build: ./mongodb
      # it moves to mongodb dir
-    image: dpavan/mongodb:2.0.0  # it is equal to docker build -t dpavan/mongodb:2.0.0
+    image: pavankumar41/mongodb:2.0.0  # it is equal to docker build -t dpavan/mongodb:2.0.0
     container_name: mongodb
 
   redis:
@@ -71,7 +71,7 @@ services:
   
   mysql:
     build: ./mysql
-    image: dpavan/mysql:2.0.0
+    image: pavankumar41/mysql:2.0.0
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: RoboShop@1
