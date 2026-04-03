@@ -17,15 +17,7 @@ services:
     depends_on:
     - redis
 
-  cart:
-    build:
-      context: ./cart
-      dockerfile: Dockerfile
-    image: dpavan/cart:2.0.0
-    container_name: cart
-    depends_on:
-    - catalogue
-    - redis
+
 
   shipping:
     build:
