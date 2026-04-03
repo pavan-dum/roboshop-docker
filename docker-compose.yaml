@@ -1,26 +1,20 @@
 services:
   catalogue:
-    build:
-      context: ./catalogue
-      dockerfile: Dockerfile
+    build: ./catalogue
     image: dpavan/catalogue:2.0.0
     container_name: catalogue
     depends_on:
     - mongodb
   
   user:
-    build:
-      context: ./user
-      dockerfile: Dockerfile
+    build: ./user
     image: dpavan/user:2.0.0
     container_name: user
     depends_on:
     - redis
 
   cart:
-    build:
-      context: ./cart
-      dockerfile: Dockerfile
+    build: ./cart
     image: dpavan/cart:2.0.0
     container_name: cart
     depends_on:
@@ -28,9 +22,7 @@ services:
     - redis
 
   shipping:
-    build:
-      context: ./shipping
-      dockerfile: Dockerfile
+    build: ./shipping
     image: dpavan/shipping:2.0.0
     container_name: shipping
     depends_on:
@@ -40,9 +32,7 @@ services:
 
   
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    build: ./frontend
     image: dpavan/frontend:2.0.0
     container_name: frontend
     ports:
@@ -54,9 +44,8 @@ services:
     - shipping
 
   mongodb:
-    build:
-      context: ./mongodb
-      dockerfile: Dockerfile  # it moves to mongodb dir
+    build: ./mongodb
+     # it moves to mongodb dir
     image: dpavan/mongodb:2.0.0  # it is equal to docker build -t dpavan/mongodb:2.0.0
     container_name: mongodb
 
@@ -65,9 +54,7 @@ services:
     container_name: redis
   
   mysql:
-    build: 
-      context: ./mysql
-      dockerfile: Dockerfile
+    build: ./mysql
     image: dpavan/mysql:2.0.0
     container_name: mysql
     environment:
